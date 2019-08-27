@@ -1,0 +1,93 @@
+$hub-size: 50px;
+$radius: 50%;
+$largeSize: 300px;
+$borderColor: #555;
+$bladeLength: 100px;
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .switch-board {
+    margin-top: 20px;
+    button {
+      background: white;
+      color: black;
+      margin:5px;
+      &.active {
+        box-shadow: inset 1px 1px 10px $borderColor;
+      }
+    }
+  }
+  .fan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $largeSize;
+    height: $largeSize;
+    border-radius: $radius;
+    border: 1px solid $borderColor;
+    .hub {
+      background: white;
+      box-shadow: 0 0 5px $borderColor;
+      height: $hub-size;
+      width: $hub-size;
+      border-radius: $radius;
+      position: relative;
+      &.fast {
+        animation: 0.1s linear infinite rotate;
+      }
+      &.medium {
+        animation: 0.5s linear infinite rotate;
+      }
+      &.slow {
+        animation: 1s linear infinite rotate;
+      }
+      .blade {
+        //display: none;
+        width: $hub-size;
+        height: $bladeLength;
+        background: brown;
+         display: block;
+        position: absolute;
+        border-radius: 0 0 10px 10px;
+        background: linear-gradient(to right, grey, darkgrey);
+        &:after {
+          display: block;
+          content: '';
+          width: 10px;
+          height: 5px;
+          background: grey;
+          position: absolute;
+          left:0;
+          right:0;
+          top:-5px;
+          margin: auto;
+        }
+        &.one {
+          top: 55px;
+        }
+        &.two {
+          top: -65px;
+          left: -70px;
+          transform: rotate(120deg)
+        }
+        &.three {
+          top: -65px;
+          left: 70px;
+          transform: rotate(-120deg);
+          right: -100px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0%   {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
